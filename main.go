@@ -15,6 +15,15 @@ func main() {
 		log.Fatalln(err)
 	}
 	log.Println("Power connected:", power)
+	log.Println("Test...")
+	resp, err := http.Post(config.Url, "application/json", bytes.NewBufferString("{\"test\": \"win\"}"))
+	if err != nil {
+		log.Println("Failed to post power status", err)
+	} else {
+		defer resp.Body.Close()
+		log.Println("Response code:", resp.StatusCode)
+	}
+
 	ticker := time.NewTicker(time.Second)
 	for {
 		<-ticker.C
