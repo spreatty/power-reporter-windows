@@ -24,7 +24,7 @@ func main() {
 		log.Println("Response code:", resp.StatusCode)
 	}
 
-	ticker := time.NewTicker(time.Second)
+	ticker := time.NewTicker(time.Millisecond * 100)
 	for {
 		<-ticker.C
 		newPower, err := IsPowerConnected()

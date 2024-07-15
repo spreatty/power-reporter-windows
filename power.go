@@ -23,8 +23,9 @@ type SystemPowerStatus struct {
 	SystemStatusFlag   byte
 }
 
+var status SystemPowerStatus
+
 func IsPowerConnected() (bool, error) {
-	var status SystemPowerStatus
 	err := getSystemPowerStatus(&status)
 	if err != nil {
 		return false, err
